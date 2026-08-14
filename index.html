@@ -154,6 +154,23 @@
         <g transform="translate(176,98)"><g><use href="#gearShape"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3.5s" repeatCount="indefinite"/></g></g>
         <g transform="translate(178,122)"><g><use href="#gearShape"/><animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="3.5s" repeatCount="indefinite"/></g></g>
         <g transform="translate(176,146)"><g><use href="#gearShape"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3.5s" repeatCount="indefinite"/></g></g>
+
+        <!-- Crane / boom lift, taller and bigger -->
+        <g stroke="#f0dcbb" stroke-width="2.5" fill="none">
+          <line x1="196" y1="160" x2="196" y2="18"/>
+          <g id="boom" transform="translate(196,18)">
+            <line x1="0" y1="0" x2="-70" y2="14">
+              <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                values="0 0 0; -10 0 0; 0 0 0" dur="2.6s" repeatCount="indefinite"/>
+            </line>
+          </g>
+          <line id="hookLine" x1="126" y1="32" x2="126" y2="60" stroke-dasharray="2,2">
+            <animate attributeName="y2" values="60;85;60" dur="2.6s" repeatCount="indefinite"/>
+          </line>
+        </g>
+        <rect id="hookBlock" x="119" y="60" width="14" height="12" fill="#6ec6e8" rx="1.5">
+          <animate attributeName="y" values="60;85;60" dur="2.6s" repeatCount="indefinite"/>
+        </rect>
       </svg>
       <div class="rail-label" style="position:static; margin-top:8px;">// BUILDING ON ARC</div>
     </div>
