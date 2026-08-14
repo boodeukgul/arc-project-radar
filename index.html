@@ -121,7 +121,7 @@
         <div><b id="statCategories">6</b><span>CATEGORIES</span></div>
       </div>
     </div>
-    <div class="rail-visual" style="align-items:center; justify-content:center;">
+  <div class="rail-visual" style="align-items:center; justify-content:center;">
       <svg viewBox="0 0 200 160" width="180" height="150">
         <defs>
           <linearGradient id="archGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -129,23 +129,65 @@
             <stop offset="100%" stop-color="#3d1f66"/>
           </linearGradient>
         </defs>
-        <!-- Arch built from stacked blocks, rising with staggered animation -->
-        <g id="archBlocks">
-          <rect x="20" y="130" width="18" height="20" fill="url(#archGrad)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.4s" fill="freeze"/></rect>
-          <rect x="162" y="130" width="18" height="20" fill="url(#archGrad)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.3s" dur="0.4s" fill="freeze"/></rect>
-          <rect x="20" y="108" width="18" height="20" fill="url(#archGrad)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/></rect>
-          <rect x="162" y="108" width="18" height="20" fill="url(#archGrad)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.7s" dur="0.4s" fill="freeze"/></rect>
-          <rect x="20" y="86" width="18" height="20" fill="url(#archGrad)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.9s" dur="0.4s" fill="freeze"/></rect>
-          <rect x="162" y="86" width="18" height="20" fill="url(#archGrad)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.1s" dur="0.4s" fill="freeze"/></rect>
-          <path d="M 20 86 Q 20 20 100 20 Q 180 20 180 86 L 162 86 Q 162 38 100 38 Q 38 38 38 86 Z"
-                fill="url(#archGrad)" opacity="0">
-            <animate attributeName="opacity" from="0" to="1" begin="1.3s" dur="0.6s" fill="freeze"/>
-          </path>
+
+        <!-- Arch -->
+        <path d="M 20 150 L 20 86 Q 20 20 100 20 Q 180 20 180 86 L 180 150 L 162 150 L 162 86 Q 162 38 100 38 Q 38 38 38 86 L 38 150 Z"
+              fill="url(#archGrad)"/>
+
+        <!-- Gear 1 - left, spinning clockwise -->
+        <g transform="translate(29,118)">
+          <g id="gear1">
+            <circle r="9" fill="none" stroke="#6ec6e8" stroke-width="2"/>
+            <circle r="3" fill="#6ec6e8"/>
+            <g stroke="#6ec6e8" stroke-width="2">
+              <line x1="0" y1="-9" x2="0" y2="-13"/>
+              <line x1="0" y1="9" x2="0" y2="13"/>
+              <line x1="-9" y1="0" x2="-13" y2="0"/>
+              <line x1="9" y1="0" x2="13" y2="0"/>
+              <line x1="6.4" y1="-6.4" x2="9.2" y2="-9.2"/>
+              <line x1="-6.4" y1="6.4" x2="-9.2" y2="9.2"/>
+              <line x1="6.4" y1="6.4" x2="9.2" y2="9.2"/>
+              <line x1="-6.4" y1="-6.4" x2="-9.2" y2="-9.2"/>
+            </g>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+          </g>
         </g>
-        <!-- little crane accent -->
-        <line x1="185" y1="150" x2="185" y2="55" stroke="#6ec6e8" stroke-width="2" opacity="0.6"/>
-        <line x1="185" y1="55" x2="150" y2="55" stroke="#6ec6e8" stroke-width="2" opacity="0.6"/>
-        <line x1="150" y1="55" x2="150" y2="65" stroke="#6ec6e8" stroke-width="2" opacity="0.6"/>
+
+        <!-- Gear 2 - right, spinning counter-clockwise -->
+        <g transform="translate(171,118)">
+          <g id="gear2">
+            <circle r="9" fill="none" stroke="#6ec6e8" stroke-width="2"/>
+            <circle r="3" fill="#6ec6e8"/>
+            <g stroke="#6ec6e8" stroke-width="2">
+              <line x1="0" y1="-9" x2="0" y2="-13"/>
+              <line x1="0" y1="9" x2="0" y2="13"/>
+              <line x1="-9" y1="0" x2="-13" y2="0"/>
+              <line x1="9" y1="0" x2="13" y2="0"/>
+              <line x1="6.4" y1="-6.4" x2="9.2" y2="-9.2"/>
+              <line x1="-6.4" y1="6.4" x2="-9.2" y2="9.2"/>
+              <line x1="6.4" y1="6.4" x2="9.2" y2="9.2"/>
+              <line x1="-6.4" y1="-6.4" x2="-9.2" y2="-9.2"/>
+            </g>
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="3.5s" repeatCount="indefinite"/>
+          </g>
+        </g>
+
+        <!-- Crane / boom lift, right side -->
+        <g stroke="#f0dcbb" stroke-width="2" fill="none">
+          <line x1="192" y1="150" x2="192" y2="45"/>
+          <g id="boom" transform="translate(192,45)">
+            <line x1="0" y1="0" x2="-45" y2="10">
+              <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                values="0 0 0; -8 0 0; 0 0 0" dur="2.6s" repeatCount="indefinite"/>
+            </line>
+          </g>
+          <line id="hookLine" x1="147" y1="55" x2="147" y2="80" stroke-dasharray="2,2">
+            <animate attributeName="y2" values="80;95;80" dur="2.6s" repeatCount="indefinite"/>
+          </line>
+        </g>
+        <rect id="hookBlock" x="141" y="80" width="12" height="10" fill="#6ec6e8" rx="1">
+          <animate attributeName="y" values="80;95;80" dur="2.6s" repeatCount="indefinite"/>
+        </rect>
       </svg>
       <div class="rail-label" style="position:static; margin-top:8px;">// BUILDING ON ARC</div>
     </div>
