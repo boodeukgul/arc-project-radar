@@ -121,14 +121,18 @@
     padding: 2px;
   }
 .price-badge {
-    display: inline-block;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
     background: rgba(0,0,0,0.25);
     border: 1px solid var(--line);
     border-radius: 5px;
-    padding: 3px 8px;
-    font-size: 11px;
+    padding: 6px 10px;
+    font-size: 12px;
     font-family: monospace;
-    margin-top: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
   }
   .price-up { color: #3ddc97; }
   .price-down { color: #e0567a; }
@@ -406,7 +410,7 @@
       if (!c.dataset.token) {
         const badge = document.createElement('div');
         badge.className = 'price-badge';
-        badge.textContent = 'No token · N/A';
+        badge.innerHTML = '<span>No token</span><span>N/A</span>';
         c.appendChild(badge);
       }
     });
@@ -435,10 +439,15 @@
             if (!id || !data[id]) return;
             const price = data[id].usd;
             const change = data[id].usd_24h_change;
-            const badge = document.createElement('div');
-            const up = change >= 0;
-            badge.className = 'price-badge ' + (up ? 'price-up' : 'price-down');
-            badge.textContent = '$' + price.toFixed(price < 1 ? 4 : 2) + ' ' + (up ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%';
+            const symbols = {
+          'chainlink': 'LINK', 'layerzero': 'ZRO', 'axelar': 'AXL',
+          'wormhole': 'W', 'stargate-finance': 'STG', 'aave': 'AAVE',
+          'maple-finance': 'SYRUP', 'curve-dao-token': 'CRV', 'usd-coin': 'USDC'
+        };
+        const badge = document.createElement('div');
+        const up = change >= 0;
+        badge.className = 'price-badge ' + (up ? 'price-up' : 'price-down');
+        badge.innerHTML = '<span>' + (symbols[id] || id.toUpperCase()) + ' $' + price.toFixed(price < 1 ? 4 : 2) + '</span><span>' + (up ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%</span>';
             c.appendChild(badge);
           });
         })
