@@ -120,7 +120,29 @@
     object-fit: contain;
     padding: 2px;
   }
-
+.price-badge {
+    display: inline-block;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-family: monospace;
+    margin-top: 8px;
+  }
+  .price-up { color: #3ddc97; }
+  .price-down { color: #e0567a; }
+  .rwa-tag {
+    display: inline-block;
+    background: rgba(240,220,187,0.15);
+    border: 1px solid var(--cream);
+    color: var(--cream);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    letter-spacing: 0.5px;
+  }
   footer { text-align: center; color: var(--navy-deep); font-size: 12px; padding: 30px 0 50px; font-weight: 600; }
 </style>
 </head>
@@ -350,7 +372,7 @@
     function updateSavedCount() {
       document.querySelector('.saved-btn').textContent = '☆ ' + getSaved().length + ' saved';
     }
-    cards.forEach(c => {
+   cards.forEach(c => {
       const name = c.querySelector('b').textContent;
       const domain = new URL(c.dataset.url).hostname;
       const logo = document.createElement('img');
@@ -375,6 +397,18 @@
         updateSavedCount();
       });
       c.prepend(star);
+      if (c.dataset.rwa === 'true') {
+        const rwaTag = document.createElement('span');
+        rwaTag.className = 'rwa-tag';
+        rwaTag.textContent = 'RWA';
+        c.querySelector('b').after(rwaTag);
+      }
+      if (!c.dataset.token) {
+        const badge = document.createElement('div');
+        badge.className = 'price-badge';
+        badge.textContent = 'No token · N/A';
+        c.appendChild(badge);
+      }
     });
     updateSavedCount();
     // Theme toggle
@@ -390,6 +424,26 @@
       localStorage.setItem('arc-radar-theme', newMode);
       applyTheme(newMode);
     });
+    // Fetch live token prices
+    const tokenIds = [...new Set(Array.from(cards).map(c => c.dataset.token).filter(Boolean))];
+    if (tokenIds.length) {
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=' + tokenIds.join(',') + '&vs_currencies=usd&include_24hr_change=true')
+        .then(r => r.json())
+        .then(data => {
+          cards.forEach(c => {
+            const id = c.dataset.token;
+            if (!id || !data[id]) return;
+            const price = data[id].usd;
+            const change = data[id].usd_24h_change;
+            const badge = document.createElement('div');
+            const up = change >= 0;
+            badge.className = 'price-badge ' + (up ? 'price-up' : 'price-down');
+            badge.textContent = '$' + price.toFixed(price < 1 ? 4 : 2) + ' ' + (up ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%';
+            c.appendChild(badge);
+          });
+        })
+        .catch(err => console.error('Price fetch failed', err));
+    }
     updateCounts();
   </script>
 </body>
