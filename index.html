@@ -6,20 +6,25 @@
 <title>Arc Project Radar</title>
 <style>
   :root {
-    --bg: #060a14;
-    --panel: #0d1420;
-    --line: #1c2942;
-    --accent: #3ddc97;
-    --accent-dim: #1f6b4d;
-    --text: #e6edf7;
-    --text-dim: #8a97ad;
+    --navy-deep: #0a1832;
+    --navy: #12274a;
+    --panel: rgba(255,255,255,0.05);
+    --line: rgba(255,255,255,0.12);
+    --accent: #6ec6e8;
+    --accent-strong: #3fa9d1;
+    --cream: #f0dcbb;
+    --text: #f4f7fb;
+    --text-dim: #a9bdd6;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
-    color: var(--text);
     font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--text);
     min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 30% 0%, var(--navy) 0%, var(--navy-deep) 55%),
+      linear-gradient(to bottom, transparent 60%, var(--cream) 100%);
+    background-attachment: fixed;
   }
 
   /* Top bar */
@@ -111,6 +116,7 @@
     justify-content: center;
     gap: 26px;
     padding: 0 24px;
+    backdrop-filter: blur(6px);
   }
   .rail {
     position: relative;
@@ -151,8 +157,8 @@
     padding: 0 32px 24px;
   }
   .potw-box {
-    background: linear-gradient(90deg, rgba(61,220,151,0.08), rgba(61,220,151,0.02));
-    border: 1px solid var(--accent-dim);
+    background: linear-gradient(90deg, rgba(110,198,232,0.12), rgba(110,198,232,0.02));
+    border: 1px solid var(--accent-strong);
     border-radius: 8px;
     padding: 18px 24px;
     display: flex;
@@ -169,7 +175,7 @@
   .potw-box p { color: var(--text-dim); font-size: 13px; }
   .potw-box button {
     background: var(--accent);
-    color: #06130d;
+    color: #0a1832;
     border: none;
     padding: 10px 18px;
     border-radius: 6px;
@@ -212,7 +218,7 @@
     white-space: nowrap;
   }
   .pill.active {
-    background: rgba(61,220,151,0.12);
+    background: rgba(110,198,232,0.18);
     border-color: var(--accent);
     color: var(--accent);
   }
@@ -236,9 +242,10 @@
 
   footer {
     text-align: center;
-    color: var(--text-dim);
+    color: var(--navy-deep);
     font-size: 12px;
-    padding: 20px 0 40px;
+    padding: 30px 0 50px;
+    font-weight: 600;
   }
 </style>
 </head>
