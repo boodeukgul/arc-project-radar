@@ -15,6 +15,17 @@
     --cream: #f0dcbb;
     --text: #f4f7fb;
     --text-dim: #a9bdd6;
+      }
+    body.light {
+    --navy-deep: #f4f7fb;
+    --navy: #ffffff;
+    --panel: rgba(18,39,74,0.05);
+    --line: rgba(18,39,74,0.15);
+    --accent: #3fa9d1;
+    --accent-strong: #1f7a9c;
+    --cream: #eef1f6;
+    --text: #12274a;
+    --text-dim: #56668a;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -107,7 +118,10 @@
 <body>
   <div class="topbar">
     <div class="logo"><span class="dot"></span> ARC PROJECT RADAR</div>
-    <button class="saved-btn">☆ 0 saved</button>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button id="themeToggle" class="saved-btn" style="width:32px; padding:6px;">🌙</button>
+      <button class="saved-btn">☆ 0 saved</button>
+    </div>
   </div>
 
   <div class="hero">
@@ -348,6 +362,19 @@
       c.prepend(star);
     });
     updateSavedCount();
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    function applyTheme(mode) {
+      document.body.classList.toggle('light', mode === 'light');
+      themeToggle.textContent = mode === 'light' ? '☀️' : '🌙';
+    }
+    const savedTheme = localStorage.getItem('arc-radar-theme') || 'dark';
+    applyTheme(savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const newMode = document.body.classList.contains('light') ? 'dark' : 'light';
+      localStorage.setItem('arc-radar-theme', newMode);
+      applyTheme(newMode);
+    });
     updateCounts();
   </script>
 </body>
