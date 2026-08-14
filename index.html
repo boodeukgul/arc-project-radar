@@ -218,14 +218,14 @@
 
   <div class="controls">
     <div class="search-row">
-      <input type="text" placeholder="Search projects...">
-      <div class="pill active">All (0)</div>
-      <div class="pill">Stable Assets (0)</div>
-      <div class="pill">Infra & Nodes (0)</div>
-      <div class="pill">Builder Tools (0)</div>
-      <div class="pill">DEX & Liquidity (0)</div>
-      <div class="pill">Payment Rails (0)</div>
-      <div class="pill">Lending & Yield (0)</div>
+      <input type="text" id="searchBox" placeholder="Search projects...">
+      <div class="pill active" data-filter="all">All (<span class="count">0</span>)</div>
+      <div class="pill" data-filter="stable">Stable Assets (<span class="count">0</span>)</div>
+      <div class="pill" data-filter="infra">Infra & Nodes (<span class="count">0</span>)</div>
+      <div class="pill" data-filter="builder">Builder Tools (<span class="count">0</span>)</div>
+      <div class="pill" data-filter="dex">DEX & Liquidity (<span class="count">0</span>)</div>
+      <div class="pill" data-filter="payments">Payment Rails (<span class="count">0</span>)</div>
+      <div class="pill" data-filter="lending">Lending & Yield (<span class="count">0</span>)</div>
     </div>
   </div>
 
@@ -267,5 +267,50 @@
   </main>
 
   <footer>0 projects on the radar</footer>
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const pills = document.querySelectorAll('.pill');
+    const searchBox = document.getElementById('searchBox');
+    let activeFilter = 'all';
+
+    function updateCounts() {
+      const counts = {};
+      cards.forEach(c => {
+        const cat = c.dataset.cat;
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+      pills.forEach(p => {
+        const f = p.dataset.filter;
+        const n = f === 'all' ? cards.length : (counts[f] || 0);
+        p.querySelector('.count').textContent = n;
+      });
+      document.getElementById('statTracked').textContent = cards.length;
+      document.getElementById('statLive').textContent = cards.length;
+      document.getElementById('statCategories').textContent = pills.length - 1;
+      document.querySelector('footer').textContent = cards.length + ' projects on the radar';
+    }
+
+    function applyFilters() {
+      const query = searchBox.value.trim().toLowerCase();
+      cards.forEach(c => {
+        const matchesCat = activeFilter === 'all' || c.dataset.cat === activeFilter;
+        const matchesSearch = c.textContent.toLowerCase().includes(query);
+        c.style.display = (matchesCat && matchesSearch) ? '' : 'none';
+      });
+    }
+
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        pills.forEach(x => x.classList.remove('active'));
+        p.classList.add('active');
+        activeFilter = p.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchBox.addEventListener('input', applyFilters);
+
+    updateCounts();
+  </script>
 </body>
 </html>
