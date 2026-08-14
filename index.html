@@ -310,6 +310,39 @@
 
     searchBox.addEventListener('input', applyFilters);
 
+    // Bookmark functionality
+    const savedKey = 'arc-radar-saved';
+    function getSaved() {
+      try { return JSON.parse(localStorage.getItem(savedKey)) || []; }
+      catch(e) { return []; }
+    }
+    function setSaved(arr) {
+      localStorage.setItem(savedKey, JSON.stringify(arr));
+    }
+    function updateSavedCount() {
+      document.querySelector('.saved-btn').textContent = '☆ ' + getSaved().length + ' saved';
+    }
+    cards.forEach(c => {
+      const name = c.querySelector('b').textContent;
+      const star = document.createElement('span');
+      star.textContent = getSaved().includes(name) ? '★' : '☆';
+      star.style.cssText = 'float:right; cursor:pointer; font-size:16px; color:#6ec6e8;';
+      star.addEventListener('click', (e) => {
+        e.stopPropagation();
+        let saved = getSaved();
+        if (saved.includes(name)) {
+          saved = saved.filter(n => n !== name);
+          star.textContent = '☆';
+        } else {
+          saved.push(name);
+          star.textContent = '★';
+        }
+        setSaved(saved);
+        updateSavedCount();
+      });
+      c.prepend(star);
+    });
+    updateSavedCount();
     updateCounts();
   </script>
 </body>
