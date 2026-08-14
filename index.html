@@ -27,123 +27,62 @@
     background-attachment: fixed;
   }
   .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 32px;
-    border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 32px; border-bottom: 1px solid var(--line);
   }
-  .topbar .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 14px;
-  }
-  .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
-  }
-  .saved-btn {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    color: var(--text-dim);
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-  }
+  .topbar .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: 1px; font-size: 14px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .saved-btn { background: var(--panel); border: 1px solid var(--line); color: var(--text-dim); padding: 6px 14px; border-radius: 6px; font-size: 13px; }
+
   .hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 56px 32px 32px;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 40px;
-    align-items: center;
+    max-width: 1200px; margin: 0 auto; padding: 56px 32px 32px;
+    display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: center;
   }
-  .hero .tag {
-    color: var(--accent);
-    font-size: 13px;
-    letter-spacing: 2px;
-    font-family: monospace;
-    margin-bottom: 14px;
-  }
+  .hero .tag { color: var(--accent); font-size: 13px; letter-spacing: 2px; font-family: monospace; margin-bottom: 14px; }
   .hero h1 { font-size: 42px; line-height: 1.15; font-weight: 700; }
   .hero h1 span { color: var(--accent); }
-  .hero p {
-    color: var(--text-dim);
-    margin-top: 16px;
-    font-size: 15px;
-    max-width: 480px;
-    line-height: 1.6;
-  }
+  .hero p { color: var(--text-dim); margin-top: 16px; font-size: 15px; max-width: 480px; line-height: 1.6; }
   .stats { display: flex; gap: 32px; margin-top: 28px; }
   .stats div b { display: block; font-size: 24px; }
   .stats div span { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
 
   .rail-visual {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    height: 220px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 26px;
-    padding: 0 24px;
-    backdrop-filter: blur(6px);
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    height: 220px; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center; gap: 26px;
+    padding: 0 24px; backdrop-filter: blur(6px);
   }
   .rail { position: relative; height: 2px; background: var(--line); border-radius: 2px; }
   .pulse {
-    position: absolute; top: -3px;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
+    position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 10px var(--accent);
     animation: travel 3.2s linear infinite;
   }
   .rail:nth-child(2) .pulse { animation-duration: 2.4s; animation-delay: 0.4s; }
   .rail:nth-child(3) .pulse { animation-duration: 4s; animation-delay: 1s; }
   @keyframes travel {
-    0% { left: 0%; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { left: 96%; opacity: 0; }
+    0% { left: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 96%; opacity: 0; }
   }
-  .rail-label {
-    position: absolute; bottom: 10px; left: 24px;
-    font-size: 10px; letter-spacing: 2px; color: var(--text-dim); font-family: monospace;
-  }
+  .rail-label { position: absolute; bottom: 10px; left: 24px; font-size: 10px; letter-spacing: 2px; color: var(--text-dim); font-family: monospace; }
 
   .potw { max-width: 1200px; margin: 0 auto; padding: 0 32px 24px; }
   .potw-box {
     background: linear-gradient(90deg, rgba(110,198,232,0.12), rgba(110,198,232,0.02));
-    border: 1px solid var(--accent-strong);
-    border-radius: 8px;
-    padding: 18px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border: 1px solid var(--accent-strong); border-radius: 8px; padding: 18px 24px;
+    display: flex; justify-content: space-between; align-items: center;
   }
   .potw-box .label { color: var(--accent); font-size: 11px; letter-spacing: 1px; font-family: monospace; }
   .potw-box h3 { font-size: 17px; margin: 4px 0 4px; }
   .potw-box p { color: var(--text-dim); font-size: 13px; }
   .potw-box button {
     background: var(--accent); color: #0a1832; border: none;
-    padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px;
-    cursor: pointer; white-space: nowrap;
+    padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; white-space: nowrap;
   }
 
-  .controls { max-width: 1200px; margin: 0 auto; padding: 0 32px 24px; }
+  .controls { max-width: 1200px; margin: 0 auto; padding: 0 32px 32px; }
   .search-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
   .search-row input[type="text"] {
-    flex: 1; min-width: 220px;
-    background: var(--panel); border: 1px solid var(--line);
+    flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
     border-radius: 6px; padding: 10px 14px; color: var(--text); font-size: 13px;
   }
   .pill {
@@ -152,37 +91,15 @@
   }
   .pill.active { background: rgba(110,198,232,0.18); border-color: var(--accent); color: var(--accent); }
 
-  .list {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 32px 60px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    overflow: hidden;
+  main.grid {
+    max-width: 1200px; margin: 0 auto; padding: 0 32px 60px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px;
   }
-  .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--line);
-    background: var(--panel);
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 16px; font-size: 14px; color: var(--text-dim);
   }
-  .row:last-child { border-bottom: none; }
-  .row-main b { font-size: 14px; display: block; }
-  .row-main span { font-size: 12px; color: var(--text-dim); }
-  .row-right { display: flex; align-items: center; gap: 10px; }
-  .row-tag {
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    color: var(--accent);
-    background: rgba(110,198,232,0.12);
-    border: 1px solid var(--accent-strong);
-    padding: 4px 10px;
-    border-radius: 12px;
-    white-space: nowrap;
-  }
-  .row-arrow { color: var(--text-dim); font-size: 14px; }
+  .card b { color: var(--text); }
 
   footer { text-align: center; color: var(--navy-deep); font-size: 12px; padding: 30px 0 50px; font-weight: 600; }
 </style>
@@ -217,7 +134,7 @@
       <div>
         <div class="label">📌 PICK OF THE WEEK</div>
         <h3>Coming soon</h3>
-        <p>Featured project will appear here once the list grows.</p>
+        <p>Featured project will appear here once the grid grows.</p>
       </div>
       <button>View project ↗</button>
     </div>
@@ -236,106 +153,34 @@
     </div>
   </div>
 
-  <div class="list" id="projectList">
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Alchemy</b><span>Node & RPC platform</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Chainlink</b><span>Oracles & cross-chain data</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>LayerZero</b><span>Crosschain messaging</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Axelar</b><span>Crosschain interoperability</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Wormhole</b><span>Crosschain messaging</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Stargate</b><span>Crosschain bridging</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>MetaMask</b><span>Wallet services</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Ledger</b><span>Wallet services / hardware</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Rainbow</b><span>Wallet services</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Privy</b><span>Embedded wallet infra</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Dynamic</b><span>Wallet infra / auth</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Turnkey</b><span>Key management infra</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>thirdweb</b><span>Developer tooling</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Tenderly</b><span>Monitoring & debugging</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>ZeroDev</b><span>Account abstraction tooling</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="builder">
-      <div class="row-main"><b>Pimlico</b><span>Account abstraction tooling</span></div>
-      <div class="row-right"><span class="row-tag">Builder Tools</span><span class="row-arrow">↗</span></div>
-    </div>
+  <main class="grid" id="projectGrid">
+    <div class="card" data-cat="builder"><b>Alchemy</b><br><span style="font-size:12px">Node & RPC platform</span></div>
+    <div class="card" data-cat="builder"><b>Chainlink</b><br><span style="font-size:12px">Oracles & cross-chain data</span></div>
+    <div class="card" data-cat="builder"><b>LayerZero</b><br><span style="font-size:12px">Crosschain messaging</span></div>
+    <div class="card" data-cat="builder"><b>Axelar</b><br><span style="font-size:12px">Crosschain interoperability</span></div>
+    <div class="card" data-cat="builder"><b>Wormhole</b><br><span style="font-size:12px">Crosschain messaging</span></div>
+    <div class="card" data-cat="builder"><b>Stargate</b><br><span style="font-size:12px">Crosschain bridging</span></div>
+    <div class="card" data-cat="builder"><b>MetaMask</b><br><span style="font-size:12px">Wallet services</span></div>
+    <div class="card" data-cat="builder"><b>Ledger</b><br><span style="font-size:12px">Wallet services / hardware</span></div>
+    <div class="card" data-cat="builder"><b>Rainbow</b><br><span style="font-size:12px">Wallet services</span></div>
+    <div class="card" data-cat="builder"><b>Privy</b><br><span style="font-size:12px">Embedded wallet infra</span></div>
+    <div class="card" data-cat="builder"><b>Dynamic</b><br><span style="font-size:12px">Wallet infra / auth</span></div>
+    <div class="card" data-cat="builder"><b>Turnkey</b><br><span style="font-size:12px">Key management infra</span></div>
+    <div class="card" data-cat="builder"><b>thirdweb</b><br><span style="font-size:12px">Developer tooling</span></div>
+    <div class="card" data-cat="builder"><b>Tenderly</b><br><span style="font-size:12px">Monitoring & debugging</span></div>
+    <div class="card" data-cat="builder"><b>ZeroDev</b><br><span style="font-size:12px">Account abstraction tooling</span></div>
+    <div class="card" data-cat="builder"><b>Pimlico</b><br><span style="font-size:12px">Account abstraction tooling</span></div>
 
-    <div class="row" data-cat="lending">
-      <div class="row-main"><b>Aave</b><span>Borrow / Lend</span></div>
-      <div class="row-right"><span class="row-tag">Lending & Yield</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="lending">
-      <div class="row-main"><b>Morpho</b><span>Borrow / Lend</span></div>
-      <div class="row-right"><span class="row-tag">Lending & Yield</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="lending">
-      <div class="row-main"><b>Maple</b><span>Institutional credit</span></div>
-      <div class="row-right"><span class="row-tag">Lending & Yield</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="lending">
-      <div class="row-main"><b>Fluid</b><span>Borrow / Lend</span></div>
-      <div class="row-right"><span class="row-tag">Lending & Yield</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="lending">
-      <div class="row-main"><b>Curve</b><span>Yield / liquidity</span></div>
-      <div class="row-right"><span class="row-tag">Lending & Yield</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="lending">
-      <div class="row-main"><b>Superform</b><span>Yield aggregation</span></div>
-      <div class="row-right"><span class="row-tag">Lending & Yield</span><span class="row-arrow">↗</span></div>
-    </div>
+    <div class="card" data-cat="lending"><b>Aave</b><br><span style="font-size:12px">Borrow / Lend</span></div>
+    <div class="card" data-cat="lending"><b>Morpho</b><br><span style="font-size:12px">Borrow / Lend</span></div>
+    <div class="card" data-cat="lending"><b>Maple</b><br><span style="font-size:12px">Institutional credit</span></div>
+    <div class="card" data-cat="lending"><b>Fluid</b><br><span style="font-size:12px">Borrow / Lend</span></div>
+    <div class="card" data-cat="lending"><b>Curve</b><br><span style="font-size:12px">Yield / liquidity</span></div>
+    <div class="card" data-cat="lending"><b>Superform</b><br><span style="font-size:12px">Yield aggregation</span></div>
 
-    <div class="row" data-cat="payments">
-      <div class="row-main"><b>Ramp Network</b><span>On/off ramp infra</span></div>
-      <div class="row-right"><span class="row-tag">Payment Rails</span><span class="row-arrow">↗</span></div>
-    </div>
-    <div class="row" data-cat="payments">
-      <div class="row-main"><b>Zodia Markets</b><span>Institutional payments</span></div>
-      <div class="row-right"><span class="row-tag">Payment Rails</span><span class="row-arrow">↗</span></div>
-    </div>
-  </div>
+    <div class="card" data-cat="payments"><b>Ramp Network</b><br><span style="font-size:12px">On/off ramp infra</span></div>
+    <div class="card" data-cat="payments"><b>Zodia Markets</b><br><span style="font-size:12px">Institutional payments</span></div>
+  </main>
 
   <footer>0 projects on the radar</footer>
 </body>
