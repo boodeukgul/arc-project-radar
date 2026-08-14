@@ -10,6 +10,7 @@
     --panel: #0d1420;
     --line: #1c2942;
     --accent: #3ddc97;
+    --accent-dim: #1f6b4d;
     --text: #e6edf7;
     --text-dim: #8a97ad;
   }
@@ -20,111 +21,123 @@
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
   }
-  header {
-    border-bottom: 1px solid var(--line);
-    padding: 32px 24px;
-    text-align: center;
-  }
-  header h1 { font-size: 28px; letter-spacing: 1px; color: var(--accent); }
-  header p { color: var(--text-dim); margin-top: 8px; font-size: 14px; }
 
-  .layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 24px;
+  /* Top bar */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .saved-btn {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  /* Hero */
+  .hero {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 32px 24px;
-  }
-
-  .filters {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 20px;
-    height: fit-content;
-  }
-  .filters h3 {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: var(--text-dim);
-    margin-bottom: 16px;
-  }
-  .filter-group { margin-bottom: 18px; }
-  .filter-group summary {
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--text);
-    padding: 4px 0;
-  }
-  .filter-group label {
-    display: block;
-    font-size: 13px;
-    color: var(--text-dim);
-    padding: 6px 0 6px 8px;
-  }
-
-  .grid {
+    padding: 56px 32px 32px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-    align-content: start;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    align-items: center;
   }
-  .card {
+  .hero .tag {
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-family: monospace;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 42px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    color: var(--text-dim);
+    margin-top: 16px;
+    font-size: 15px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+  }
+  .stats div b {
+    display: block;
+    font-size: 24px;
+  }
+  .stats div span {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* Settlement rail visual */
+  .rail-visual {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 16px;
-    font-size: 14px;
-    color: var(--text-dim);
+    border-radius: 12px;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 26px;
+    padding: 0 24px;
   }
-</style>
-</head>
-<body>
-  <header>
-    <h1>ARC PROJECT RADAR</h1>
-    <p>Tracking the Arc ecosystem — Circle's stablecoin-native Layer-1</p>
-  </header>
-
-  <div class="layout">
-    <aside class="filters">
-      <h3>FILTERS</h3>
-
-      <details class="filter-group" open>
-        <summary>Issuers</summary>
-      </details>
-
-      <details class="filter-group" open>
-        <summary>Infrastructure</summary>
-      </details>
-
-      <details class="filter-group" open>
-        <summary>Developer Tools</summary>
-        <label><input type="checkbox"> Crosschain</label>
-        <label><input type="checkbox"> Oracles</label>
-        <label><input type="checkbox"> Tools</label>
-        <label><input type="checkbox"> Wallet Services</label>
-      </details>
-
-      <details class="filter-group" open>
-        <summary>Trading</summary>
-        <label><input type="checkbox"> DEXs</label>
-      </details>
-
-      <details class="filter-group" open>
-        <summary>Payments</summary>
-      </details>
-
-      <details class="filter-group" open>
-        <summary>Financial Services</summary>
-        <label><input type="checkbox"> Borrow/Lend</label>
-        <label><input type="checkbox"> Yield</label>
-      </details>
-    </aside>
-
-    <main class="grid" id="projectGrid">
-      <div class="card">Project cards coming next.</div>
-    </main>
-  </div>
-</body>
-</html>
+  .rail {
+    position: relative;
+    height: 2px;
+    background: var(--line);
+    border-radius: 2px;
+  }
+  .pulse {
+    position: absolute;
+    top: -3px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: travel 3.2s linear infinite;
+  }
+  .rail:nth-child(2) .pulse { animation-duration: 2.4s; animation-delay: 0.4s; }
+  .rail:nth-child(3) .pulse { animation-duration: 4s; animation-delay: 1s; }
+  @keyframes travel {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 96%; opacity: 0; }
+  }
+  .rail-label {
+    position: absolute;
+    bottom: 10px; left: 24px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color:
