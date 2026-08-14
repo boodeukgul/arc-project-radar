@@ -320,7 +320,19 @@
     <div class="card" data-cat="infra" data-url="https://blockscout.com" onclick="window.open(this.dataset.url,'_blank')"><b>Blockscout</b><br><span style="font-size:12px">Block explorer</span></div>
   </main>
   
-  <footer>0 projects on the radar</footer>
+  <footer style="border-top: 1px solid var(--line); padding: 24px 32px 40px; text-align: left; max-width: 1200px; margin: 0 auto;">
+    <div id="footerCount" style="margin-bottom: 8px;">0 projects on the radar</div>
+    <div style="color: var(--text-dim); font-size: 12px; margin-bottom: 6px;">
+      © 2026 Arc Project Radar — a fan-made tracker, not affiliated with Circle or Arc.
+      <span style="margin-left:10px;">Price data via CoinGecko · not financial advice</span>
+      <span id="loadTime" style="margin-left:10px;"></span>
+    </div>
+    <div style="font-size: 12px;">
+      <a href="https://github.com/boodeukgul/arc-project-radar" target="_blank" style="color: var(--accent); text-decoration:none;">View on GitHub ↗</a>
+      <span style="color: var(--text-dim); margin: 0 6px;">·</span>
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" style="color: var(--accent); text-decoration:none;">↑ Back to top</a>
+    </div>
+  </footer>
   <script>
     const cards = document.querySelectorAll('.card');
     const pills = document.querySelectorAll('.pill');
@@ -341,7 +353,8 @@
       document.getElementById('statTracked').textContent = cards.length;
       document.getElementById('statLive').textContent = cards.length;
       document.getElementById('statCategories').textContent = pills.length - 1;
-      document.querySelector('footer').textContent = cards.length + ' projects on the radar';
+      document.getElementById('footerCount').textContent = cards.length + ' projects on the radar';
+      document.getElementById('loadTime').textContent = 'Page loaded: ' + new Date().toLocaleString();
     }
 
     function applyFilters() {
