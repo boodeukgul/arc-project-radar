@@ -10,7 +10,6 @@
     --panel: #0d1420;
     --line: #1c2942;
     --accent: #3ddc97;
-    --accent-dim: #1f6b4d;
     --text: #e6edf7;
     --text-dim: #8a97ad;
   }
@@ -26,27 +25,56 @@
     padding: 32px 24px;
     text-align: center;
   }
-  header h1 {
-    font-size: 28px;
-    letter-spacing: 1px;
-    color: var(--accent);
-  }
-  header p {
-    color: var(--text-dim);
-    margin-top: 8px;
-    font-size: 14px;
-  }
-  main {
-    max-width: 1100px;
+  header h1 { font-size: 28px; letter-spacing: 1px; color: var(--accent); }
+  header p { color: var(--text-dim); margin-top: 8px; font-size: 14px; }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 24px;
+    padding: 32px 24px;
   }
-  .status-banner {
+
+  .filters {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
-    padding: 16px 20px;
-    border-radius: 6px;
+    border-radius: 8px;
+    padding: 20px;
+    height: fit-content;
+  }
+  .filters h3 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .filter-group { margin-bottom: 18px; }
+  .filter-group summary {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    padding: 4px 0;
+  }
+  .filter-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    padding: 6px 0 6px 8px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    align-content: start;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
     font-size: 14px;
     color: var(--text-dim);
   }
@@ -57,10 +85,46 @@
     <h1>ARC PROJECT RADAR</h1>
     <p>Tracking the Arc ecosystem — Circle's stablecoin-native Layer-1</p>
   </header>
-  <main>
-    <div class="status-banner">
-      🚧 Site under construction — project grid coming soon.
-    </div>
-  </main>
+
+  <div class="layout">
+    <aside class="filters">
+      <h3>FILTERS</h3>
+
+      <details class="filter-group" open>
+        <summary>Issuers</summary>
+      </details>
+
+      <details class="filter-group" open>
+        <summary>Infrastructure</summary>
+      </details>
+
+      <details class="filter-group" open>
+        <summary>Developer Tools</summary>
+        <label><input type="checkbox"> Crosschain</label>
+        <label><input type="checkbox"> Oracles</label>
+        <label><input type="checkbox"> Tools</label>
+        <label><input type="checkbox"> Wallet Services</label>
+      </details>
+
+      <details class="filter-group" open>
+        <summary>Trading</summary>
+        <label><input type="checkbox"> DEXs</label>
+      </details>
+
+      <details class="filter-group" open>
+        <summary>Payments</summary>
+      </details>
+
+      <details class="filter-group" open>
+        <summary>Financial Services</summary>
+        <label><input type="checkbox"> Borrow/Lend</label>
+        <label><input type="checkbox"> Yield</label>
+      </details>
+    </aside>
+
+    <main class="grid" id="projectGrid">
+      <div class="card">Project cards coming next.</div>
+    </main>
+  </div>
 </body>
 </html>
