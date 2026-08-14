@@ -96,9 +96,9 @@
     display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px;
   }
   .card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
-    padding: 16px; font-size: 14px; color: var(--text-dim);
-  }
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 16px; font-size: 14px; color: var(--text-dim); cursor: pointer;
+}
   .card b { color: var(--text); }
 
   footer { text-align: center; color: var(--navy-deep); font-size: 12px; padding: 30px 0 50px; font-weight: 600; }
@@ -230,40 +230,40 @@
   </div>
 
   <main class="grid" id="projectGrid">
-    <div class="card" data-cat="builder"><b>Alchemy</b><br><span style="font-size:12px">Node & RPC platform</span></div>
-    <div class="card" data-cat="builder"><b>Chainlink</b><br><span style="font-size:12px">Oracles & cross-chain data</span></div>
-    <div class="card" data-cat="builder"><b>LayerZero</b><br><span style="font-size:12px">Crosschain messaging</span></div>
-    <div class="card" data-cat="builder"><b>Axelar</b><br><span style="font-size:12px">Crosschain interoperability</span></div>
-    <div class="card" data-cat="builder"><b>Wormhole</b><br><span style="font-size:12px">Crosschain messaging</span></div>
-    <div class="card" data-cat="builder"><b>Stargate</b><br><span style="font-size:12px">Crosschain bridging</span></div>
-    <div class="card" data-cat="builder"><b>MetaMask</b><br><span style="font-size:12px">Wallet services</span></div>
-    <div class="card" data-cat="builder"><b>Ledger</b><br><span style="font-size:12px">Wallet services / hardware</span></div>
-    <div class="card" data-cat="builder"><b>Rainbow</b><br><span style="font-size:12px">Wallet services</span></div>
-    <div class="card" data-cat="builder"><b>Privy</b><br><span style="font-size:12px">Embedded wallet infra</span></div>
-    <div class="card" data-cat="builder"><b>Dynamic</b><br><span style="font-size:12px">Wallet infra / auth</span></div>
-    <div class="card" data-cat="builder"><b>Turnkey</b><br><span style="font-size:12px">Key management infra</span></div>
-    <div class="card" data-cat="builder"><b>thirdweb</b><br><span style="font-size:12px">Developer tooling</span></div>
-    <div class="card" data-cat="builder"><b>Tenderly</b><br><span style="font-size:12px">Monitoring & debugging</span></div>
-    <div class="card" data-cat="builder"><b>ZeroDev</b><br><span style="font-size:12px">Account abstraction tooling</span></div>
-    <div class="card" data-cat="builder"><b>Pimlico</b><br><span style="font-size:12px">Account abstraction tooling</span></div>
+    <div class="card" data-cat="builder" data-url="https://alchemy.com" onclick="window.open(this.dataset.url,'_blank')"><b>Alchemy</b><br><span style="font-size:12px">Node & RPC platform</span></div>
+    <div class="card" data-cat="builder" data-url="https://chain.link" onclick="window.open(this.dataset.url,'_blank')"><b>Chainlink</b><br><span style="font-size:12px">Oracles & cross-chain data</span></div>
+    <div class="card" data-cat="builder" data-url="https://layerzero.network" onclick="window.open(this.dataset.url,'_blank')"><b>LayerZero</b><br><span style="font-size:12px">Crosschain messaging</span></div>
+    <div class="card" data-cat="builder" data-url="https://axelar.network" onclick="window.open(this.dataset.url,'_blank')"><b>Axelar</b><br><span style="font-size:12px">Crosschain interoperability</span></div>
+    <div class="card" data-cat="builder" data-url="https://wormhole.com" onclick="window.open(this.dataset.url,'_blank')"><b>Wormhole</b><br><span style="font-size:12px">Crosschain messaging</span></div>
+    <div class="card" data-cat="builder" data-url="https://stargate.finance" onclick="window.open(this.dataset.url,'_blank')"><b>Stargate</b><br><span style="font-size:12px">Crosschain bridging</span></div>
+    <div class="card" data-cat="builder" data-url="https://metamask.io" onclick="window.open(this.dataset.url,'_blank')"><b>MetaMask</b><br><span style="font-size:12px">Wallet services</span></div>
+    <div class="card" data-cat="builder" data-url="https://ledger.com" onclick="window.open(this.dataset.url,'_blank')"><b>Ledger</b><br><span style="font-size:12px">Wallet services / hardware</span></div>
+    <div class="card" data-cat="builder" data-url="https://rainbow.me" onclick="window.open(this.dataset.url,'_blank')"><b>Rainbow</b><br><span style="font-size:12px">Wallet services</span></div>
+    <div class="card" data-cat="builder" data-url="https://privy.io" onclick="window.open(this.dataset.url,'_blank')"><b>Privy</b><br><span style="font-size:12px">Embedded wallet infra</span></div>
+    <div class="card" data-cat="builder" data-url="https://dynamic.xyz" onclick="window.open(this.dataset.url,'_blank')"><b>Dynamic</b><br><span style="font-size:12px">Wallet infra / auth</span></div>
+    <div class="card" data-cat="builder" data-url="https://turnkey.com" onclick="window.open(this.dataset.url,'_blank')"><b>Turnkey</b><br><span style="font-size:12px">Key management infra</span></div>
+    <div class="card" data-cat="builder" data-url="https://thirdweb.com" onclick="window.open(this.dataset.url,'_blank')"><b>thirdweb</b><br><span style="font-size:12px">Developer tooling</span></div>
+    <div class="card" data-cat="builder" data-url="https://tenderly.co" onclick="window.open(this.dataset.url,'_blank')"><b>Tenderly</b><br><span style="font-size:12px">Monitoring & debugging</span></div>
+    <div class="card" data-cat="builder" data-url="https://zerodev.app" onclick="window.open(this.dataset.url,'_blank')"><b>ZeroDev</b><br><span style="font-size:12px">Account abstraction tooling</span></div>
+    <div class="card" data-cat="builder" data-url="https://pimlico.io" onclick="window.open(this.dataset.url,'_blank')"><b>Pimlico</b><br><span style="font-size:12px">Account abstraction tooling</span></div>
 
-    <div class="card" data-cat="lending"><b>Aave</b><br><span style="font-size:12px">Borrow / Lend</span></div>
-    <div class="card" data-cat="lending"><b>Morpho</b><br><span style="font-size:12px">Borrow / Lend</span></div>
-    <div class="card" data-cat="lending"><b>Maple</b><br><span style="font-size:12px">Institutional credit</span></div>
-    <div class="card" data-cat="lending"><b>Fluid</b><br><span style="font-size:12px">Borrow / Lend</span></div>
-    <div class="card" data-cat="lending"><b>Curve</b><br><span style="font-size:12px">Yield / liquidity</span></div>
-    <div class="card" data-cat="lending"><b>Superform</b><br><span style="font-size:12px">Yield aggregation</span></div>
+    <div class="card" data-cat="lending" data-url="https://aave.com" onclick="window.open(this.dataset.url,'_blank')"><b>Aave</b><br><span style="font-size:12px">Borrow / Lend</span></div>
+    <div class="card" data-cat="lending" data-url="https://morpho.org" onclick="window.open(this.dataset.url,'_blank')"><b>Morpho</b><br><span style="font-size:12px">Borrow / Lend</span></div>
+    <div class="card" data-cat="lending" data-url="https://maple.finance" onclick="window.open(this.dataset.url,'_blank')"><b>Maple</b><br><span style="font-size:12px">Institutional credit</span></div>
+    <div class="card" data-cat="lending" data-url="https://fluid.instadapp.io" onclick="window.open(this.dataset.url,'_blank')"><b>Fluid</b><br><span style="font-size:12px">Borrow / Lend</span></div>
+    <div class="card" data-cat="lending" data-url="https://curve.fi" onclick="window.open(this.dataset.url,'_blank')"><b>Curve</b><br><span style="font-size:12px">Yield / liquidity</span></div>
+    <div class="card" data-cat="lending" data-url="https://superform.xyz" onclick="window.open(this.dataset.url,'_blank')"><b>Superform</b><br><span style="font-size:12px">Yield aggregation</span></div>
 
-    <div class="card" data-cat="payments"><b>Ramp Network</b><br><span style="font-size:12px">On/off ramp infra</span></div>
-    <div class="card" data-cat="payments"><b>Zodia Markets</b><br><span style="font-size:12px">Institutional payments</span></div>
+    <div class="card" data-cat="payments" data-url="https://ramp.network" onclick="window.open(this.dataset.url,'_blank')"><b>Ramp Network</b><br><span style="font-size:12px">On/off ramp infra</span></div>
+    <div class="card" data-cat="payments" data-url="https://zodia.markets" onclick="window.open(this.dataset.url,'_blank')"><b>Zodia Markets</b><br><span style="font-size:12px">Institutional payments</span></div>
 
-    <div class="card" data-cat="stable"><b>Circle</b><br><span style="font-size:12px">USDC issuer / native gas token</span></div>
-    <div class="card" data-cat="stable"><b>Curve</b><br><span style="font-size:12px">Stable liquidity infra</span></div>
+    <div class="card" data-cat="stable" data-url="https://circle.com" onclick="window.open(this.dataset.url,'_blank')"><b>Circle</b><br><span style="font-size:12px">USDC issuer / native gas token</span></div>
+    <div class="card" data-cat="stable" data-url="https://curve.fi" onclick="window.open(this.dataset.url,'_blank')"><b>Curve</b><br><span style="font-size:12px">Stable liquidity infra</span></div>
 
-    <div class="card" data-cat="infra"><b>Cloudflare</b><br><span style="font-size:12px">Core web infra</span></div>
-    <div class="card" data-cat="infra"><b>AWS</b><br><span style="font-size:12px">Cloud infra</span></div>
-    <div class="card" data-cat="infra"><b>Blockdaemon</b><br><span style="font-size:12px">Node infra</span></div>
-    <div class="card" data-cat="infra"><b>Blockscout</b><br><span style="font-size:12px">Block explorer</span></div>
+    <div class="card" data-cat="infra" data-url="https://cloudflare.com" onclick="window.open(this.dataset.url,'_blank')"><b>Cloudflare</b><br><span style="font-size:12px">Core web infra</span></div>
+    <div class="card" data-cat="infra" data-url="https://aws.amazon.com" onclick="window.open(this.dataset.url,'_blank')"><b>AWS</b><br><span style="font-size:12px">Cloud infra</span></div>
+    <div class="card" data-cat="infra" data-url="https://blockdaemon.com" onclick="window.open(this.dataset.url,'_blank')"><b>Blockdaemon</b><br><span style="font-size:12px">Node infra</span></div>
+    <div class="card" data-cat="infra" data-url="https://blockscout.com" onclick="window.open(this.dataset.url,'_blank')"><b>Blockscout</b><br><span style="font-size:12px">Block explorer</span></div>
   </main>
 
   <footer>0 projects on the radar</footer>
