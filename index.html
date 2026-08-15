@@ -451,12 +451,18 @@
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=' + tokenIds.join(',') + '&vs_currencies=usd&include_24hr_change=true')
         .then(r => r.json())
         .then(data => {
-          cards.forEach(c => {
-            const id = c.dataset.token;
-            if (!id || !data[id]) return;
-            const price = data[id].usd;
-            const change = data[id].usd_24h_change;
-                 const symbols = {
+         function formatPrice(p) {
+        if (p >= 1) return p.toFixed(2);
+        if (p >= 0.01) return p.toFixed(4);
+        if (p >= 0.0001) return p.toFixed(6);
+        return p.toFixed(8);
+      }
+      cards.forEach(c => {
+        const id = c.dataset.token;
+        if (!id || !data[id]) return;
+        const price = data[id].usd;
+        const change = data[id].usd_24h_change;
+        const symbols = {
           'chainlink': 'LINK', 'layerzero': 'ZRO', 'axelar': 'AXL',
           'wormhole': 'W', 'stargate-finance': 'STG', 'aave': 'AAVE',
           'maple-finance': 'SYRUP', 'curve-dao-token': 'CRV', 'usd-coin': 'USDC',
@@ -465,9 +471,9 @@
         const badge = document.createElement('div');
         const up = change >= 0;
         badge.className = 'price-badge ' + (up ? 'price-up' : 'price-down');
-        badge.innerHTML = '<span>' + (symbols[id] || id.toUpperCase()) + ' $' + price.toFixed(price < 1 ? 4 : 2) + '</span><span>' + (up ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%</span>';
-            c.appendChild(badge);
-          });
+        badge.innerHTML = '<span>' + (symbols[id] || id.toUpperCase()) + ' $' + formatPrice(price) + '</span><span>' + (up ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%</span>';
+        c.appendChild(badge);
+      });
         })
         .catch(err => console.error('Price fetch failed', err));
     }
